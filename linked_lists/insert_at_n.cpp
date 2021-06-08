@@ -11,16 +11,6 @@ public:
         next = NULL;
     }
 };
-
-void insert_at_head(linked_list_node *head, int idata)
-{
-    linked_list_node *new_node = new linked_list_node(idata);
-
-    new_node->data = idata;
-    new_node->next = head;
-    head = new_node;
-}
-
 void print_list(linked_list_node *head)
 {
     linked_list_node *temp = head;
@@ -30,7 +20,23 @@ void print_list(linked_list_node *head)
         temp = temp->next;
     }
 }
-
+void insert_at_n(linked_list_node *head, int data, int adress)
+{
+    linked_list_node *temp = head;
+    int count = 1;
+    linked_list_node *new_node = new linked_list_node(data);
+    while (temp != NULL)
+    {
+        if (count == adress - 1)
+        {
+            linked_list_node *a = temp->next;
+            temp->next = new_node;
+            new_node->next = a;
+        }
+        temp = temp->next;
+        count++;
+    }
+}
 int main()
 {
 
@@ -46,7 +52,6 @@ int main()
     fourth->next = fifth;
     fifth->next = sixth;
     sixth->next = NULL;
-    insert_at_head(head, 3);
+    insert_at_n(head, 1000, 5);
     print_list(head);
-    return 0;
 }
