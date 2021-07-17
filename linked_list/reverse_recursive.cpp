@@ -20,24 +20,21 @@ void print_list(node *head)
         temp = temp->next;
     }
 }
-void delete_at_n(node *head, int key)
+node *reverse_recursive(node *head)
 {
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+    node *new_head = reverse_recursive(head->next);
+    head->next->next = head;
+    head->next = NULL;
 
-    node *temp = head;
-    if (temp == NULL)
-    {
-        return;
-    }
-    while (temp->next->data != key)
-    {
-        temp = temp->next;
-    }
-    node *current = temp;
-    node *next_node = temp->next->next;
-    current->next = next_node;
+    return new_head;
 }
 int main()
 {
+
     node *head = new node(100);
     node *second = new node(200);
     node *third = new node(300);
@@ -50,7 +47,7 @@ int main()
     fourth->next = fifth;
     fifth->next = sixth;
     sixth->next = NULL;
-    delete_at_n(head, 300);
+    reverse_recursive(head);
     print_list(head);
     return 0;
 }

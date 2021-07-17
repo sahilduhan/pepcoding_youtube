@@ -20,21 +20,19 @@ void print_list(node *head)
         temp = temp->next;
     }
 }
-void delete_at_n(node *head, int key)
+node *reverse(node *head)
 {
-
-    node *temp = head;
-    if (temp == NULL)
+    node *prev = NULL;
+    node *current = head;
+    node *next_ptr;
+    while (current != NULL)
     {
-        return;
+        next_ptr = current->next;
+        current->next = prev;
+        prev = current;
+        current = next_ptr;
     }
-    while (temp->next->data != key)
-    {
-        temp = temp->next;
-    }
-    node *current = temp;
-    node *next_node = temp->next->next;
-    current->next = next_node;
+    return prev;
 }
 int main()
 {
@@ -50,7 +48,7 @@ int main()
     fourth->next = fifth;
     fifth->next = sixth;
     sixth->next = NULL;
-    delete_at_n(head, 300);
+    reverse(head);
     print_list(head);
     return 0;
 }
