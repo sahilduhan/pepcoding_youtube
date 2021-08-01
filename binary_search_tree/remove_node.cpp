@@ -19,7 +19,31 @@ Node *delete_node(Node *root, int key)
     {
         return NULL;
     }
-    // if()
+    if (key < root->data)
+    {
+        root->left = delete_node(root->left, key);
+    }
+    if (key > root->data)
+    {
+        root->right = delete_node(root->right, key);
+    }
+    else
+    {
+        if (root->right == NULL && root->left == NULL)
+        {
+        }
+        if (root->left != NULL)
+        {
+            return root->left;
+        }
+        if (root->right != NULL)
+        {
+            return root->right;
+        }
+        else
+            return NULL;
+    }
+    return root;
 }
 int main()
 {
