@@ -21,10 +21,16 @@ void print_tree(Node *root)
     print_tree(root->left);
     print_tree(root->right);
 }
-void least_common_ancestor(Node *root, int d1, int d2)
+int least_common_ancestor(Node *root, int d1, int d2)
 {
-    if (root == NULL) return;
-    
+    if (root == NULL)
+        return 0;
+    if (d1 < root->data && d2 < root->data)
+        return least_common_ancestor(root->left, d1, d2);
+    else if (d1 > root->data && d2 > root->data)
+        return least_common_ancestor(root->right, d1, d2);
+    else
+        return root->data;
 }
 int main()
 {
@@ -45,5 +51,6 @@ int main()
     root->right->right = new Node(70);
     root->right->right->right = new Node(80);
     print_tree(root);
+    cout << least_common_ancestor(root, 10, 80);
     return 0;
 }
