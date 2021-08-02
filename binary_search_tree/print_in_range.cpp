@@ -13,10 +13,25 @@ public:
         right = NULL;
     }
 };
+void print_in_range(Node *root, int num_1, int num_2)
+{
+    if (root == NULL)
+        return;
+    if (num_1 < root->data && num_2 < root->data)
+        print_in_range(root->left, num_1, num_2);
+    else if (num_1 > root->data && num_2 > root->data)
+        print_in_range(root->right, num_1, num_2);
+    else
+    {
+        print_in_range(root->left, num_1, num_2);
+        cout << root->data << " ";
+        print_in_range(root->right, num_1, num_2);
+    }
+}
 int main()
 {
     Node *root = new Node(40);
-    
+
     //left side of the tree
 
     root->left = new Node(20);
@@ -31,6 +46,6 @@ int main()
     root->right->left = new Node(50);
     root->right->right = new Node(70);
     root->right->right->right = new Node(80);
-
+    print_in_range(root, 40, 80);
     return 0;
 }
