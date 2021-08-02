@@ -13,9 +13,25 @@ public:
         right = NULL;
     }
 };
+void print_tree(Node *root)
+{
+    if (root == NULL)
+        return;
+    print_tree(root->left);
+    cout << root->data << " ";
+    print_tree(root->right);
+}
+int sum = 0;
 void replace(Node *root)
 {
-    
+    if (root == NULL)
+        return;
+    int data;
+    replace(root->right);
+    data = root->data;
+    root->data = sum;
+    sum += data;
+    replace(root->left);
 }
 int main()
 {
@@ -35,6 +51,7 @@ int main()
     root->right->left = new Node(50);
     root->right->right = new Node(70);
     root->right->right->right = new Node(80);
-
+    replace(root);
+    print_tree(root);
     return 0;
 }
