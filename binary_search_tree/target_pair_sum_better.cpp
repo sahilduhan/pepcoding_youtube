@@ -13,6 +13,10 @@ public:
         right = NULL;
     }
 };
+void fill_array(Node *root)
+{
+    
+}
 int main()
 {
 
