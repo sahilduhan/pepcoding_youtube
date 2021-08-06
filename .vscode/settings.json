@@ -3,5 +3,13 @@
         "ostream": "cpp",
         "iostream": "cpp",
         "new": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled",
+    "editor.inlineSuggest.enabled": true,
+    "editor.suggest.shareSuggestSelections": true,
+    "debug.allowBreakpointsEverywhere": true,
+    "problems.showCurrentInStatus": true,
+    "editor.suggest.preview": true,
+    "workbench.editor.enablePreviewFromCodeNavigation": true,
+    "diffEditor.codeLens": true
 }
