@@ -22,10 +22,7 @@ int height_tree(binary_tree_node *root)
 }
 int diameter_tree(binary_tree_node *root)
 {
-    if (root == NULL)
-    {
-        return 0;
-    }
+    if (root == NULL) return 0;
     int option_1 = max(height_tree(root->left), diameter_tree(root->right));
     int option_2 = diameter_tree(root->right);
     int option_3 = diameter_tree(root->left);
